@@ -203,15 +203,16 @@ For any questions or support, feel free to reach out:
 
 ## 📊 Diagrams
 
+### Use Case Diagram
+Voici le diagramme des cas d'utilisation pour le projet Téléconsultation :
+
+![Use Case Diagram](https://drive.google.com/uc?id=1HkZjRHMr16ZC2Gw_uyKR3q9yL5yKdwwM)
+
 ### Class Diagram
 Voici le diagramme des classes pour le projet Téléconsultation :
 
 ![Class Diagram](https://drive.google.com/uc?id=1O5eAnPrF6WNfGkc4N245wBkXC0DGYmgb)
 
-### Use Case Diagram
-Voici le diagramme des cas d'utilisation pour le projet Téléconsultation :
-
-![Use Case Diagram](https://drive.google.com/uc?id=1HkZjRHMr16ZC2Gw_uyKR3q9yL5yKdwwM)
 
 
 
