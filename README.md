@@ -200,5 +200,12 @@ For any questions or support, feel free to reach out:
 ---
 
 ## 📸 Screenshots (Optional)
-Add screenshots of your app here to showcase its functionality.
+## 📸 Screenshots
+
+### Homepage
+![Homepage Screenshot](screenshots/homepage.png)
+
+### Appointment Scheduling
+![Appointment Scheduling](screenshots/appointment.png)
+
 
