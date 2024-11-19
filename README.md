@@ -202,7 +202,3 @@ For any questions or support, feel free to reach out:
 ## 📸 Screenshots (Optional)
 Add screenshots of your app here to showcase its functionality.
 
----
-
-## 🎉 Acknowledgements
-Special thanks to all contributors and the open-source community!
