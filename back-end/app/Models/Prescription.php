@@ -10,7 +10,7 @@ class Prescription extends Model
     use HasFactory;
 
     protected $fillable = [
-        'appointment_id', 'date_issued',
+        'appointment_id', 'date_issued', 'doctor_notes', 'status',
     ];
 
     // Relationships
@@ -22,5 +22,10 @@ class Prescription extends Model
     public function medications()
     {
         return $this->hasMany(Medication::class);
+    }
+
+    public function issuedBy()
+    {
+        return $this->belongsTo(Doctor::class, 'issued_by');
     }
 }

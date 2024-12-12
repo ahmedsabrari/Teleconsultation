@@ -10,7 +10,14 @@ class Doctor extends Model
     use HasFactory;
 
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'specialty', 'availability',
+        'first_name',
+        'last_name',
+        'email',
+        'password',
+        'specialty',
+        'availability',
+        'status',
+        'profile_picture',
     ];
 
     protected $casts = [
@@ -21,9 +28,36 @@ class Doctor extends Model
         'password',
     ];
 
+    // Automatically hash passwords when setting
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
     // Relationships
     public function appointments()
     {
         return $this->hasMany(Appointment::class);
+    }
+
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
+
+    public function schedules()
+    {
+        return $this->hasMany(DoctorSchedule::class);
+    }
+
+    // Scopes
+    public function scopeAvailable($query)
+    {
+        return $query->where('status', 'available');
     }
 }

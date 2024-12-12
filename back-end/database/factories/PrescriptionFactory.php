@@ -19,7 +19,9 @@ class PrescriptionFactory extends Factory
     {
         return [
             'appointment_id' => Appointment::factory(),
-        'date_issued' => $this->faker->date(),
+            'date_issued' => $this->faker->date(),
+            'doctor_notes' => $this->faker->paragraph(),
+            'status' => $this->faker->randomElement(['pending', 'fulfilled', 'cancelled']),
         ];
     }
 }

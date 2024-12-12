@@ -9,12 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('prescriptions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('appointment_id')->constrained('appointments');
             $table->date('date_issued');
+            $table->text('doctor_notes')->nullable();  // Notes or comments about the prescription
+            $table->string('status')->default('pending');  // fulfilled, pending, canceled
             $table->timestamps();
         });
     }

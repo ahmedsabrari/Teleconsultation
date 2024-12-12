@@ -13,6 +13,6 @@ class MedicalRecordSeeder extends Seeder
      */
     public function run(): void
     {
-        MedicalRecord::factory(15)->create();
+        MedicalRecord::factory(10)->create();
     }
 }

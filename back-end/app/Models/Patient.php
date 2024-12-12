@@ -10,13 +10,32 @@ class Patient extends Model
     use HasFactory;
 
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'phone', 'address', 'date_of_birth',
+        'first_name',
+        'last_name',
+        'email',
+        'password',
+        'phone',
+        'address',
+        'date_of_birth',
+        'status',
+        'profile_picture',
     ];
 
     protected $hidden = [
         'password',
     ];
 
+    // Accessors
+    public function getFullNameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
+
+    // Mutators
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
     // Relationships
     public function appointments()
     {
@@ -31,5 +50,20 @@ class Patient extends Model
     public function notifications()
     {
         return $this->hasMany(Notification::class);
+    }
+    public function prescriptions()
+    {
+        return $this->hasManyThrough(Prescription::class, Appointment::class);
+    }
+
+    // Scopes
+    public function scopeActive($query)
+    {
+        return $query->where('status', 'active');
+    }
+
+    public function scopeWithAppointments($query)
+    {
+        return $query->has('appointments');
     }
 }

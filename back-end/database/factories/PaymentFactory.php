@@ -19,8 +19,10 @@ class PaymentFactory extends Factory
     {
         return [
             'appointment_id' => Appointment::factory(),
-            'amount' => $this->faker->randomFloat(2, 50, 200),
-            'status' => 'completed',
+            'amount' => $this->faker->randomFloat(2, 50, 500),
+            'payment_method' => $this->faker->randomElement(['credit_card', 'PayPal']),
+            'transaction_id' => $this->faker->uuid(),
+            'status' => $this->faker->randomElement(['completed', 'refunded']),
             'payment_date' => $this->faker->dateTime(),
         ];
     }

@@ -16,4 +16,21 @@ class Administrator extends Model
     protected $hidden = [
         'password',
     ];
+
+    // Automatically hash passwords when setting
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+    // Relationships
+    public function createdPatients()
+    {
+        return $this->hasMany(Patient::class, 'created_by');
+    }
+
+    public function createdDoctors()
+    {
+        return $this->hasMany(Doctor::class, 'created_by');
+    }
 }

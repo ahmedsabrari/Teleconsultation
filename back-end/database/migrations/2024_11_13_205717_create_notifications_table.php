@@ -9,14 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('recipient_id')->constrained('patients'); // can be extended to doctors or admins
+            $table->foreignId('recipient_id')->constrained('patients')->onDelete('cascade');
             $table->enum('type', ['reminder', 'confirmation', 'alert']);
             $table->text('message');
-            $table->dateTime('sent_date');
+            $table->timestamp('read_at')->nullable();
+            $table->dateTime('sent_date')->index(); // Index for faster queries
             $table->timestamps();
         });
     }

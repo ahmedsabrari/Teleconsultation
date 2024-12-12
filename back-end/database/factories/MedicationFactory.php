@@ -19,9 +19,9 @@ class MedicationFactory extends Factory
     {
         return [
             'prescription_id' => Prescription::factory(),
-        'name' => $this->faker->word(),
-        'dosage' => $this->faker->word(),
-        'duration' => $this->faker->word(),
+            'name' => $this->faker->word(),
+            'dosage' => $this->faker->numberBetween(1, 500) . 'mg',
+            'duration' => $this->faker->numberBetween(1, 30) . ' days',
         ];
     }
 }

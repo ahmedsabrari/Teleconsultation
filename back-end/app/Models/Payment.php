@@ -10,7 +10,7 @@ class Payment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'appointment_id', 'amount', 'status', 'payment_date',
+        'appointment_id', 'amount', 'status', 'payment_date', 'payment_method', 'transaction_id',
     ];
 
     // Relationships

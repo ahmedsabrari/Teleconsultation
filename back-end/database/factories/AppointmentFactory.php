@@ -20,10 +20,14 @@ class AppointmentFactory extends Factory
     {
         return [
             'patient_id' => Patient::factory(),
-        'doctor_id' => Doctor::factory(),
-        'appointment_date' => $this->faker->dateTime(),
-        'status' => 'scheduled',
-        'video_link' => $this->faker->url(),
+            'doctor_id' => Doctor::factory(),
+            'appointment_date' => $this->faker->dateTimeBetween('now', '+1 month'),
+            'status' => $this->faker->randomElement(['scheduled', 'completed', 'cancelled']),
+            'appointment_type' => $this->faker->randomElement(['telemedicine', 'in-person']),
+            'duration' => $this->faker->numberBetween(15, 60),
+            'notes' => $this->faker->sentence(),
+            'video_link' => $this->faker->url(),
+            'cancelled_at' => $this->faker->optional()->dateTime(),
         ];
     }
 }

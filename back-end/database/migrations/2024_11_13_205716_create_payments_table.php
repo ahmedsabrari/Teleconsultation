@@ -9,13 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('appointment_id')->constrained('appointments');
+            $table->foreignId('appointment_id')->constrained('appointments')->onDelete('cascade');
             $table->decimal('amount', 10, 2);
-            $table->enum('status', ['completed', 'refunded']);
+            $table->string('payment_method', 50);
+            $table->string('transaction_id')->nullable();
+            $table->enum('status', ['completed', 'refunded'])->default('completed');
             $table->dateTime('payment_date');
             $table->timestamps();
         });

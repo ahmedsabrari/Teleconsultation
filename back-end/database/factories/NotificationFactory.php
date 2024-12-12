@@ -19,9 +19,10 @@ class NotificationFactory extends Factory
     {
         return [
             'recipient_id' => Patient::factory(),
-        'type' => 'reminder', // or 'confirmation', 'alert'
-        'message' => $this->faker->sentence(),
-        'sent_date' => $this->faker->dateTime(),
+            'type' => $this->faker->randomElement(['reminder', 'confirmation', 'alert']),
+            'message' => $this->faker->sentence(),
+            'read_at' => $this->faker->optional()->dateTime(),
+            'sent_date' => $this->faker->dateTime(),
         ];
     }
 }
